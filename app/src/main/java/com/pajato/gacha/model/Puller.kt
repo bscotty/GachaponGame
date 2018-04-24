@@ -1,5 +1,7 @@
 package com.pajato.gacha.model
 
+import com.pajato.gacha.model.event.PullEvent
+import com.pajato.gacha.model.event.RxBus
 import java.util.*
 
 object Puller {
@@ -7,7 +9,7 @@ object Puller {
 
     fun pull(): Character {
         val int = random.nextInt(101) + 1
-        return when (int) {
+        val c = when (int) {
             in 1..45 -> {
                 val list = Character.CommonCharacters.values()
                 val common: Character.CommonCharacters = list[random.nextInt(list.size)]
@@ -35,5 +37,7 @@ object Puller {
                 Character.createCharacterAsRarity(common.charName, Rarity.COMMON, common.url)
             }
         }
+        RxBus.send(PullEvent(c))
+        return c
     }
 }

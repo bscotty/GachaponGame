@@ -26,7 +26,10 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         RAHMI("Rahmi Romazi", "https://vignette.wikia.nocookie.net/mechanus-archive/images/7/7e/Rahmi_transparent.png"),
         KID("Buckley Starling", "https://vignette.wikia.nocookie.net/mechanus-archive/images/d/d9/Thekid.png"),
         ESTRELLA("Estrella Punazo Abaroa", "https://vignette.wikia.nocookie.net/mechanus-archive/images/b/b7/Turnip.png"),
-        SKYLOS("Skylos the Dog", "https://vignette.wikia.nocookie.net/mechanus-archive/images/0/07/Skylossprite.png")
+        SKYLOS("Skylos the Dog", "https://vignette.wikia.nocookie.net/mechanus-archive/images/0/07/Skylossprite.png"),
+
+        // Enemies
+        RRO_DALGO("Rro'Dalgo", "https://vignette.wikia.nocookie.net/mechanus-archive/images/8/86/Rrodalgo.gif"),
     }
 
     enum class RareCharacters(val charName: String, val url: String) {
@@ -36,9 +39,12 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         REDD("Redd Rosethread", "https://vignette.wikia.nocookie.net/mechanus-archive/images/3/34/Reddsprite2.png"),
         LUCRETIA("Lucretia Scaeva", "https://vignette.wikia.nocookie.net/mechanus-archive/images/3/39/Lucretia.png/revision/20151126014327"),
         MERARI("Rahaavi Merari", "https://vignette.wikia.nocookie.net/mechanus-archive/images/7/7a/Merari_transp.png"),
-        TARA("Tara Songflower", ""),
+        TARA("Tara Songflower", "https://vignette.wikia.nocookie.net/mechanus-archive/images/0/03/Tarasprite.png"),
 
         // Allies
+        RIRA("Rira", "https://vignette.wikia.nocookie.net/mechanus-archive/images/e/e3/Riraflock.png"),
+        BLAZONRY("Blazonry", "https://vignette.wikia.nocookie.net/mechanus-archive/images/e/ee/Blazonrust.png"),
+        SYLVIE("Sylvie", "https://vignette.wikia.nocookie.net/mechanus-archive/images/1/18/Sylvie.png"),
 
         // Enemies
         RA_KYNIR("Ra'kynir", "https://vignette.wikia.nocookie.net/mechanus-archive/images/a/ac/Ra%27Kynir.gif"),
@@ -49,6 +55,7 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
 
         // Voice Pieces
         CONTROL_RELUCTANCE("Control Reluctance", "https://vignette.wikia.nocookie.net/mechanus-archive/images/1/17/Reluc.gif"),
+        SURGE("Surge of Fury", "https://vignette.wikia.nocookie.net/mechanus-archive/images/6/62/SurgeofFury.gif"),
 
         // Flockborn Leaders
         FLUX("Eternal Flux", "https://vignette.wikia.nocookie.net/mechanus-archive/images/d/db/Flux.png"),
@@ -68,6 +75,9 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         ARCH_HAND("Arch-Hand", "https://vignette.wikia.nocookie.net/mechanus-archive/images/6/62/ArchHand.png"),
         ROVIAL("Rovial Chorus", "https://vignette.wikia.nocookie.net/mechanus-archive/images/3/3f/Rovial.png"),
         LEGENDARY_LORD("Legendary Lord", "https://vignette.wikia.nocookie.net/mechanus-archive/images/f/f6/LegendaryLord.png"),
+        VAKI("Vaki Mafapedia", "https://vignette.wikia.nocookie.net/mechanus-archive/images/2/27/Vaki.png"),
+        KURU("Kuru Tem", "https://vignette.wikia.nocookie.net/mechanus-archive/images/d/d8/Kuru_Tem.png"),
+        ARATAK("Aratak Sudorn", "https://vignette.wikia.nocookie.net/mechanus-archive/images/e/ec/Aratak.png"),
 
         // Enemies
         FLAMENCO("Flamenco", "https://vignette.wikia.nocookie.net/mechanus-archive/images/1/1a/Flamenco.gif"),
@@ -77,21 +87,36 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         // Misc
         MOLE("Kip \"Mole\" Starling", "https://vignette.wikia.nocookie.net/mechanus-archive/images/6/63/Mole.png"),
         BARREL("Barrel", "https://vignette.wikia.nocookie.net/mechanus-archive/images/2/20/Barrelf.gif"),
+        JIG("Jig", "https://vignette.wikia.nocookie.net/mechanus-archive/images/c/c4/JIG.png"),
+        AILEEN_GRAY("Aileen Gray", "")
     }
 
     enum class CommonCharacters(val charName: String, val url: String) {
         // Allies
         ARCA_AGENT("ARCA Agent", ""),
+        ARCA_SCHOLAR("ARCA Scholar", ""),
         AGING_WARFORGED("Aging Warforged", ""),
         MACHINE_SPIRIT_CLERIC("Machine Spirit Cleric", ""),
         DESCENT_SCAVENGER("Descent Scavenger", ""),
+        GOLIATH_HERO("Goliath Hero", ""),
 
         // Enemies
         PATRICIDE_GOON("Patricide Goon", ""),
-        DAD_BOY_GOON("Dad's Boys Goon", ""),
+        DAD_BOY("Dad's Boy", ""),
         HAVOC("HAVOC Construct", ""),
         HAVOC_ELITE("HAVOC Elite", ""),
         SMILING_CHILD("Smiling Child", ""),
         CLADES_AGENT("Clades Diabolus Operative", ""),
+        GOLIATH_VILLAIN("Goliath Villain", ""),
+
+        // Misc
+        AOSITH("Carrier Aosith", ""),
+        DURAHAN("Carrier Durahan", ""),
+        GROZEN_POLITICIAN("Grozen Politician", ""),
+        GNOMISH_TINKER("Gnomish Tinker", ""),
+        VANIAN_MERCHANT("Vanian Merchant", ""),
+        CELERY_VENDOR("Celery Vendor", ""),
+        WHITEFIRE_CRAFTER("Whitefire Crafter", ""),
+        WHITEFIRE_MERCHANT("Whitefire Merchant", ""),
     }
 }
