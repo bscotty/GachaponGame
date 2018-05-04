@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="emailPasswordBackgroundColor">#0f9d58</color>
+    <color name="googleBackgroundColor">#FFFFFF</color>
+    <color name="facebookBackgroundColor">#3B5998</color>
+    <color name="twitterBackgroundColor">#1DA1F2</color>
 </resources>

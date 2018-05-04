@@ -1,30 +1,45 @@
 package com.pajato.gacha.ui
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.view.View
-import android.view.ViewGroup
 import com.pajato.gacha.model.Character
-import com.pajato.gacha.model.Puller
 import com.pajato.gacha.model.event.ImageErrorEvent
 import com.pajato.gacha.model.event.ImageLoadedEvent
+import com.pajato.gacha.model.event.PullEvent
 import com.pajato.gacha.model.event.RxBus
 import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import java.io.InputStream
 import java.net.URL
 
-class PullListener(val root: ViewGroup) : View.OnClickListener {
-    private lateinit var current: Character
+object ImageLoader : Consumer<PullEvent>, LifecycleObserver {
+    private lateinit var subscription: Disposable
     private lateinit var bm: Bitmap
 
-    override fun onClick(v: View?) {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        subscription = RxBus.subscribeToEventType(PullEvent::class.java, this)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    fun onPause() {
+        subscription.dispose()
+    }
+
+    override fun accept(t: PullEvent) {
+        loadImage(t.getData())
+    }
+
+    fun loadImage(character: Character) {
         Completable.fromAction {
-            current = Puller.pull()
-            val i: InputStream = URL(current.url).openStream()
+            val i: InputStream = URL(character.url).openStream()
             bm = BitmapFactory.decodeStream(i)
         }.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
