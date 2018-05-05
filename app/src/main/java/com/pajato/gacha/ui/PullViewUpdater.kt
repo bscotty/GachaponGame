@@ -29,11 +29,11 @@ class PullViewUpdater(private val root: ViewGroup) : Consumer<Event>, LifecycleO
     private val progressSpinner: ProgressBar = root.findViewById(R.id.progressSpinner)
     private val pullText: TextView = root.findViewById(R.id.pullText)
     private val characterImage: AppCompatImageView = root.findViewById(R.id.characterImage)
-    private val fakeImage: TextView = root.findViewById(R.id.fakeImage)
+    private val fakeImage: TextView = root.findViewById(R.id.fakeImageText)
     private val revealView: AppCompatImageView = root.findViewById(R.id.revealView)
 
     /** Accept both ImageLoadedEvents and PullEvents. */
-    override fun accept(t: Event?) {
+    override fun accept(t: Event) {
         when (t) {
             is ImageLoadedEvent -> accept(t)
             is PullEvent -> accept(t)

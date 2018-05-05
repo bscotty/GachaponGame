@@ -24,20 +24,20 @@
         app:srcCompat="@drawable/ic_photo_filter_black_24dp" />
 
     <TextView
-        android:id="@+id/fakeImage"
+        android:id="@+id/fakeImageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pretend It's A Cool Pic"
+        android:text="@string/noImage"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterImage" />
+        app:layout_constraintTop_toBottomOf="@id/characterImage" />
 
     <TextView
         android:id="@+id/pullText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Character Name"
+        android:text="@string/characterName"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

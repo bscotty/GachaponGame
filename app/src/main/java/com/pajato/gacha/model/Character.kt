@@ -1,10 +1,10 @@
 package com.pajato.gacha.model
 
-sealed class Character(open val name: String, val rarity: Rarity, open var url: String) {
-    data class SuperRare(override val name: String, override var url: String = "") : Character(name, Rarity.SUPER_RARE, url) {}
-    data class Rare(override val name: String, override var url: String = "") : Character(name, Rarity.RARE, url)
-    data class Uncommon(override val name: String, override var url: String = "") : Character(name, Rarity.UNCOMMON, url)
-    data class Common(override val name: String, override var url: String = "") : Character(name, Rarity.COMMON, url)
+sealed class Character(open val name: String, val rarity: Rarity, open val url: String) {
+    data class SuperRare(override val name: String, override val url: String = "") : Character(name, Rarity.SUPER_RARE, url)
+    data class Rare(override val name: String, override val url: String = "") : Character(name, Rarity.RARE, url)
+    data class Uncommon(override val name: String, override val url: String = "") : Character(name, Rarity.UNCOMMON, url)
+    data class Common(override val name: String, override val url: String = "") : Character(name, Rarity.COMMON, url)
 
     companion object {
         fun createCharacterAsRarity(name: String, rarity: Rarity, url: String = ""): Character {
@@ -29,7 +29,15 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         SKYLOS("Skylos the Dog", "https://vignette.wikia.nocookie.net/mechanus-archive/images/0/07/Skylossprite.png"),
 
         // Enemies
-        RRO_DALGO("Rro'Dalgo", "https://vignette.wikia.nocookie.net/mechanus-archive/images/8/86/Rrodalgo.gif"),
+        RRO_DALGO("Rro'Dalgo", "https://vignette.wikia.nocookie.net/mechanus-archive/images/8/86/Rrodalgo.gif");
+
+        fun getRarity(): Rarity {
+            return Rarity.SUPER_RARE
+        }
+
+        fun toCharacter(): Character {
+            return Character.createCharacterAsRarity(this.charName, this.getRarity(), this.url)
+        }
     }
 
     enum class RareCharacters(val charName: String, val url: String) {
@@ -64,7 +72,15 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         // Misc
         FAORIC("Razeiya Faoric", "https://vignette.wikia.nocookie.net/mechanus-archive/images/5/58/Faoric.png"),
         IMPUNITY("Impunity", ""),
-        ANGEL("Angel", ""),
+        ANGEL("Angel", "");
+
+        fun getRarity(): Rarity {
+            return Rarity.RARE
+        }
+
+        fun toCharacter(): Character {
+            return Character.createCharacterAsRarity(this.charName, this.getRarity(), this.url)
+        }
     }
 
     enum class UncommonCharacters(val charName: String, val url: String) {
@@ -88,7 +104,15 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         MOLE("Kip \"Mole\" Starling", "https://vignette.wikia.nocookie.net/mechanus-archive/images/6/63/Mole.png"),
         BARREL("Barrel", "https://vignette.wikia.nocookie.net/mechanus-archive/images/2/20/Barrelf.gif"),
         JIG("Jig", "https://vignette.wikia.nocookie.net/mechanus-archive/images/c/c4/JIG.png"),
-        AILEEN_GRAY("Aileen Gray", "")
+        AILEEN_GRAY("Aileen Gray", "");
+
+        fun getRarity(): Rarity {
+            return Rarity.UNCOMMON
+        }
+
+        fun toCharacter(): Character {
+            return Character.createCharacterAsRarity(this.charName, this.getRarity(), this.url)
+        }
     }
 
     enum class CommonCharacters(val charName: String, val url: String) {
@@ -99,6 +123,11 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         MACHINE_SPIRIT_CLERIC("Machine Spirit Cleric", ""),
         DESCENT_SCAVENGER("Descent Scavenger", ""),
         GOLIATH_HERO("Goliath Hero", ""),
+        RECON_BIRDRIDER("Recon Birdrider", ""),
+        VOLUNTEER_WARRIOR("Volunteer Warrior", ""),
+        VOLUNTEER_MAGE("Volunteer Mage", ""),
+        VOLUNTEER_CLERIC("Volunteer Cleric", ""),
+        VOLUNTEER_ROGUE("Volunteer Rogue", ""),
 
         // Enemies
         PATRICIDE_GOON("Patricide Goon", ""),
@@ -108,6 +137,7 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         SMILING_CHILD("Smiling Child", ""),
         CLADES_AGENT("Clades Diabolus Operative", ""),
         GOLIATH_VILLAIN("Goliath Villain", ""),
+        HELLSPAWN_MARAUDER("Hellspawn Marauder", ""),
 
         // Misc
         AOSITH("Carrier Aosith", ""),
@@ -118,5 +148,16 @@ sealed class Character(open val name: String, val rarity: Rarity, open var url: 
         CELERY_VENDOR("Celery Vendor", ""),
         WHITEFIRE_CRAFTER("Whitefire Crafter", ""),
         WHITEFIRE_MERCHANT("Whitefire Merchant", ""),
+        BRONN_FARMER("Bronn Farmer", ""),
+        VANIAN_VALIANT("Vanian Valiant", ""),
+        FEY_WANDERER("Fey Wanderer", "");
+
+        fun getRarity(): Rarity {
+            return Rarity.COMMON
+        }
+
+        fun toCharacter(): Character {
+            return Character.createCharacterAsRarity(this.charName, this.getRarity(), this.url)
+        }
     }
 }

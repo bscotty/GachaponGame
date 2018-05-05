@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Gacha</string>
+    <string name="characterName">Character Name</string>
+    <string name="errorEmailCollision">That email is already in use by another account.</string>
+    <string name="errorGenericMessage">Something went wrong. We\'re sorry. Please try again.</string>
+    <string name="errorInvalidEmail">That email is invalid. Please try another.</string>
+    <string name="errorInvalidPassword">That password is too simple. Please try another.</string>
+    <string name="errorNoEmail">Please enter a valid email.</string>
+    <string name="errorNoPassword">Please enter a valid password.</string>
+    <string name="email">Email</string>
+    <string name="noImage">Pretend It\'s A Cool Pic</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_email">Sign In With Email &amp; Password</string>
+    <string name="sign_in_facebook">Sign In With Facebook</string>
+    <string name="sign_in_google">Sign In With Google</string>
+    <string name="sign_in_title">Please Sign In To Proceed</string>
+    <string name="sign_in_twitter">Sign in with Twitter</string>
+    <string name="username">Username</string>
 </resources>
