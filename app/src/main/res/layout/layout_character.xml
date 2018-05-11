@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="6dp"
@@ -10,6 +11,7 @@
     android:layout_marginRight="1dp"
     android:layout_marginStart="1dp"
     android:layout_marginTop="1dp"
+    app:cardPreventCornerOverlap="false"
     card_view:cardCornerRadius="8dp">
 
     <android.support.constraint.ConstraintLayout
@@ -23,6 +25,7 @@
             android:maxHeight="50dp"
             android:maxWidth="50dp"
             android:scaleType="fitCenter"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/characterImageProgressBar"
             app:layout_constraintEnd_toEndOf="@id/characterImageProgressBar"
             app:layout_constraintStart_toStartOf="@id/characterImageProgressBar"
@@ -33,7 +36,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="8dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="x2"
+            android:text=""
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/characterName"
             app:layout_constraintEnd_toEndOf="parent"

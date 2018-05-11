@@ -6,7 +6,7 @@ import android.arch.lifecycle.OnLifecycleEvent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.widget.AppCompatImageView
-import com.pajato.gacha.model.Character
+import com.pajato.gacha.model.character.Character
 import com.pajato.gacha.model.event.ImageErrorEvent
 import com.pajato.gacha.model.event.ImageLoadedEvent
 import com.pajato.gacha.model.event.PullEvent

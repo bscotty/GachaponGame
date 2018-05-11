@@ -2,6 +2,7 @@ package com.pajato.gacha
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.pajato.gacha.database.FirebaseDatabaseManager
 import com.pajato.gacha.model.Puller
 import com.pajato.gacha.ui.ImageLoader
 import com.pajato.gacha.ui.PullViewUpdater
@@ -17,6 +18,7 @@ class PullActivity : AppCompatActivity() {
         }
         this.lifecycle.addObserver(PullViewUpdater(root))
         this.lifecycle.addObserver(ImageLoader)
+        this.lifecycle.addObserver(FirebaseDatabaseManager)
     }
 
 }

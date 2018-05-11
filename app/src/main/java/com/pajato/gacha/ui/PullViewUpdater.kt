@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.pajato.gacha.R
-import com.pajato.gacha.model.Character
-import com.pajato.gacha.model.Rarity
+import com.pajato.gacha.model.character.Character
+import com.pajato.gacha.model.character.Rarity
 import com.pajato.gacha.model.event.*
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -78,7 +78,7 @@ class PullViewUpdater(private val root: ViewGroup) : Consumer<Event>, LifecycleO
             characterImage.visibility = View.VISIBLE
             progressSpinner.visibility = View.GONE
             pullText.visibility = View.VISIBLE
-            pullText.text = character.name
+            pullText.text = character.charName
 
             // If the bitmap is valid use it, otherwise use a default image.
             if (hasValidBitmap) {
@@ -90,12 +90,7 @@ class PullViewUpdater(private val root: ViewGroup) : Consumer<Event>, LifecycleO
             }
 
             // Different character rarities should have different backgrounds.
-            val resourceId = when (character.rarity) {
-                Rarity.COMMON -> R.drawable.gradient_common
-                Rarity.UNCOMMON -> R.drawable.gradient_uncommon
-                Rarity.RARE -> R.drawable.gradient_rare
-                Rarity.SUPER_RARE -> R.drawable.gradient_super_rare
-            }
+            val resourceId = character.rarity.backgroundDrawableId
             revealView.setImageResource(resourceId)
 
             // Do the reveal animation.

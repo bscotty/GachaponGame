@@ -18,7 +18,7 @@ class MainActivityTest : ActivityTestBase<MainActivity>(MainActivity::class.java
 
         checkViewVisibility(withId(R.id.root), ViewMatchers.Visibility.VISIBLE)
         checkViewVisibility(withId(R.id.mainFab), ViewMatchers.Visibility.VISIBLE)
-        checkViewVisibility(withId(R.id.characterList), ViewMatchers.Visibility.VISIBLE)
+        checkViewVisibility(withId(R.id.characterRecyclerView), ViewMatchers.Visibility.VISIBLE)
     }
 
     /** Ensure that when we are not signed in we are directed to the sign in activity. */
@@ -27,7 +27,7 @@ class MainActivityTest : ActivityTestBase<MainActivity>(MainActivity::class.java
         waitForView(withId(R.id.signInFrame), 5000)
 
         checkViewDoesNotExist(withId(R.id.mainFab))
-        checkViewDoesNotExist(withId(R.id.characterList))
+        checkViewDoesNotExist(withId(R.id.characterRecyclerView))
     }
 
 }

@@ -1,5 +1,6 @@
 package com.pajato.gacha.model
 
+import com.pajato.gacha.model.character.*
 import com.pajato.gacha.model.event.PullEvent
 import com.pajato.gacha.model.event.RxBus
 import java.util.*
@@ -17,30 +18,25 @@ object Puller {
     fun getRandomCharacterFromInt(int: Int): Character {
         return when (int) {
             in 1..45 -> {
-                val list = Character.CommonCharacters.values()
-                val common: Character.CommonCharacters = list[random.nextInt(list.size)]
-                common.toCharacter()
+                val list = Common.values()
+                list[random.nextInt(list.size)]
             }
             in 46..70 -> {
-                val list = Character.UncommonCharacters.values()
-                val uncommon: Character.UncommonCharacters = list[random.nextInt(list.size)]
-                uncommon.toCharacter()
+                val list = Uncommon.values()
+                list[random.nextInt(list.size)]
             }
             in 71..90 -> {
-                val list = Character.RareCharacters.values()
-                val rare: Character.RareCharacters = list[random.nextInt(list.size)]
-                rare.toCharacter()
+                val list = Rare.values()
+                list[random.nextInt(list.size)]
             }
             in 91..100 -> {
-                val list = Character.SuperRareCharacters.values()
-                val superRare: Character.SuperRareCharacters = list[random.nextInt(list.size)]
-                superRare.toCharacter()
+                val list = SuperRare.values()
+                list[random.nextInt(list.size)]
             }
             else -> {
-                // this is impossible but it's fine whatever
-                val list = Character.CommonCharacters.values()
-                val common: Character.CommonCharacters = list[random.nextInt(list.size)]
-                common.toCharacter()
+                // On the off chance something goes wrong or the number fed in is wrong.
+                val list = Common.values()
+                list[random.nextInt(list.size)]
             }
         }
     }

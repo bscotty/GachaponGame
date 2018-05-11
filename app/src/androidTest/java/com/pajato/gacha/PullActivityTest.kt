@@ -4,9 +4,9 @@ import android.support.test.espresso.Espresso
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withId
-import com.pajato.gacha.model.Character
+import com.pajato.gacha.model.character.Character
 import com.pajato.gacha.model.Puller
-import com.pajato.gacha.model.Rarity
+import com.pajato.gacha.model.character.Rarity
 import com.pajato.gacha.model.event.PullEvent
 import com.pajato.gacha.model.event.RxBus
 import junit.framework.Assert
@@ -112,7 +112,7 @@ class PullActivityTest : ActivityTestBase<PullActivity>(PullActivity::class.java
         }
         val shouldBeDrawable = rule.activity.resources.getDrawable(resId, null).constantState
         val displayedDrawable = rule.activity.revealView.drawable.constantState
-        Assert.assertEquals("Incorrect Reveal Drawable for character ${character.name}" +
+        Assert.assertEquals("Incorrect Reveal Drawable for character ${character.getValue()}" +
                 " of rarity ${character.rarity}", displayedDrawable, shouldBeDrawable)
     }
 }
