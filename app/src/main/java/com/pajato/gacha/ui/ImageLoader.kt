@@ -5,6 +5,7 @@ import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.support.v7.widget.AppCompatImageView
 import com.pajato.gacha.model.Character
 import com.pajato.gacha.model.event.ImageErrorEvent
 import com.pajato.gacha.model.event.ImageLoadedEvent
@@ -21,7 +22,6 @@ import java.net.URL
 
 object ImageLoader : Consumer<PullEvent>, LifecycleObserver {
     private lateinit var subscription: Disposable
-    private lateinit var bm: Bitmap
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
@@ -38,21 +38,46 @@ object ImageLoader : Consumer<PullEvent>, LifecycleObserver {
     }
 
     fun loadImage(character: Character) {
+        lateinit var bitmap: Bitmap
         Completable.fromAction {
             val i: InputStream = URL(character.url).openStream()
-            bm = BitmapFactory.decodeStream(i)
+            bitmap = BitmapFactory.decodeStream(i)
         }.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(object : CompletableObserver {
                     override fun onSubscribe(d: Disposable) {}
 
                     override fun onComplete() {
-                        RxBus.send(ImageLoadedEvent(bm))
+                        RxBus.send(ImageLoadedEvent(bitmap))
                     }
 
                     override fun onError(e: Throwable) {
                         RxBus.send(ImageErrorEvent(e))
                     }
+                })
+    }
+
+    /** Provide a more modularized way to load images, with optional callbacks. */
+    fun loadImage(character: Character, imageView: AppCompatImageView,
+                  onSuccess: (() -> Unit?) = {}, onFailure: (() -> Unit?) = {}) {
+        lateinit var bitmap: Bitmap
+        Completable.fromAction {
+            val i: InputStream = URL(character.url).openStream()
+            bitmap = BitmapFactory.decodeStream(i)
+        }.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(object : CompletableObserver {
+                    override fun onSubscribe(d: Disposable) {}
+
+                    override fun onComplete() {
+                        imageView.setImageBitmap(bitmap)
+                        onSuccess()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        onFailure()
+                    }
+
                 })
     }
 

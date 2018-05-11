@@ -53,6 +53,11 @@ object FirebaseLoginManager : LifecycleObserver, OnCompleteListener<AuthResult> 
         }
     }
 
+    /** Allow classes or activities to get  */
+    fun getCurrentUser() : FirebaseUser? {
+        return FirebaseAuth.getInstance().currentUser
+    }
+
     fun signOut() {
         mAuth.signOut()
     }

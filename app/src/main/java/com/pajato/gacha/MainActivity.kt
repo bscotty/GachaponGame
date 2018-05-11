@@ -4,11 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.pajato.gacha.database.FirebaseLoginManager
-import com.pajato.gacha.model.Puller
 import com.pajato.gacha.model.event.RxBus
 import com.pajato.gacha.model.event.UserEvent
-import com.pajato.gacha.ui.ImageLoader
-import com.pajato.gacha.ui.PullViewUpdater
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,12 +16,13 @@ class MainActivity : AppCompatActivity(), Consumer<UserEvent> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fab.setOnClickListener { _ ->
-            Puller.pull()
+
+        mainFab.setOnClickListener {
+            val intent = Intent(this, PullActivity::class.java)
+            startActivityForResult(intent, MainActivity.PULL_REQUEST)
         }
-        this.lifecycle.addObserver(PullViewUpdater(root))
+
         this.lifecycle.addObserver(FirebaseLoginManager)
-        this.lifecycle.addObserver(ImageLoader)
     }
 
     /** Subscribe to user events. */
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity(), Consumer<UserEvent> {
 
     companion object {
         const val SIGN_IN_REQUEST = 1
+        const val PULL_REQUEST = 2 // :)
     }
 
 }

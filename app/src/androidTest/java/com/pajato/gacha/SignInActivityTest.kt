@@ -88,7 +88,8 @@ class SignInActivityTest : ActivityTestBase<SignInActivity>(SignInActivity::clas
 
         // ensure that the account used is a new account each time. this email does not have to be a
         // "valid" email in the sense that it can send or receive messages, it just has to be an
-        // appropriate format and cannot already be in the database.
+        // appropriate format and cannot already be in the database. NOTE: This will cause an additional
+        // "user" to appear in the firebase console with each run. They should be deleted afterward.
         val email = "support-" + Calendar.getInstance().timeInMillis.toString() + "@pajato.com"
         val password = "123abcxyz"
 
